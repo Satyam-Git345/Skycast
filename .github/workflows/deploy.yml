@@ -1,4 +1,4 @@
-name: Deploy Vite App to EC2
+name: Deploy Vite to EC2
 
 on:
   push:
@@ -10,30 +10,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
+    - uses: actions/setup-node@v3
       with:
         node-version: '20'
 
-    - name: Install Dependencies
-      run: npm install
+    - run: npm install
+    - run: npm run build
 
-    - name: Build Vite App
-      run: npm run build
-
-    - name: Upload Dist Folder to Server
+    - name: Copy files to EC2
       uses: appleboy/scp-action@v0.1.4
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
-        key: ${{ secrets.EC2_SSH_KEY }}
+        key: ${{ secrets.EC2_SSH_KEY }}  # PRIVATE KEY HERE
         source: "dist/*"
         target: "/var/www/html"
 
-    - name: Restart Nginx (optional)
+    - name: Restart Nginx
       uses: appleboy/ssh-action@v0.1.8
       with:
         host: ${{ secrets.EC2_HOST }}
