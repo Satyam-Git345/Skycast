@@ -47,7 +47,7 @@ export const StateContextProvider: React.FC<StateContextProviderProps> = ({ chil
   // Define states for the store API response
   const [weather, setWeather] = useState<WeatherData>({});
   const [values, setValues] = useState<ValuesData[]>([]);
-  const [place, setPlace] = useState<string>('Washington,DC,USA');
+  const [place, setPlace] = useState<string>('Noida,Uttar Pradesh Pradesh');
   const [thisLocation, setLocation] = useState<string>('');
 
   // Define state for loading status
