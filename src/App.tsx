@@ -79,7 +79,7 @@ function App() {
           </div>
           <div className="bg-gradient-to-r bg-clip-text from-sky-500 to-sky-800">
             <h1 className="font-extrabold tracking-tighter text-2xl md:text-3xl text-transparent">
-              Wheather App Satyam Shukla      Wheather App Satyam Shukla
+              Wheather App Satyam Shukla   
             </h1>
           </div>
         </a>
